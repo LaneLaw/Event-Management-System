@@ -27,13 +27,31 @@
 <!--create.ejs-->
 
 <form action="/event/create" method="POST">
-    <div class="row">
-    <div class="container" class="card col-12 col-sm-6">
-        <label>Name</label>
-        <input type="text" class="form-control" name="Event[name]" required>
+ <div class="row">
+    <div class="col-sm-6">
+<!--Event Name-->
+        <label>Event Name:</label>
+        <input type="text" class="form-control" name="Event[eventname]" required>
+<!--Short Description-->
+        <label>Short Description:</label><br>
+        <textarea  rows=6 type="text" class="form-control" name="Event[shortdescription]" required></textarea>
+<!--Full Description-->    
+        <label>Full Description:</label><br>
+        <textarea  rows=12 type="text" class="form-control" name="Event[fulldescription]" required></textarea>
     </div>
-    <div class="container">  <br><br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</div>
-</div>
+    <div class="col-sm-6">  
+<!--Image URL-->
+        <label>Image URL:</label><br>
+        <input type="text" class="form-control" name="Event[imageurl]" required>
+<!--Event Date-->
+        <label>Event Date:</label><br>
+        <input type="text" class="form-control" name="Event[eventdate]" required>
+<!--Time-->
+        <label>Time:</label><br>
+        <input type="text" class="form-control" name="Event[time]" required>
+
+
+     <br><br><button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+ </div>
 </form>

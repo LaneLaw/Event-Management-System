@@ -9,13 +9,25 @@ module.exports = {
 
   attributes: {
 
-    name: {
+    eventname: {
       type: "string"
     },
-    
-    age: {
-      type: "number"
+    shortdescription: {
+      type: "string"
     },
+    fulldescription: {
+      type: "string"
+    },
+    imageurl:{
+      type: "string"
+  },
+    eventdate:{
+      type: "string"
+},
+    time:{
+     type: "string"
+},
+    
 
   },
 

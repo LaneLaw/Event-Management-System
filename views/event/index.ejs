@@ -1,6 +1,7 @@
 <!--index.ejs-->
 <table class="table">
         <% events.forEach( function(model) { %>
-            <tr><td><%= model.name %></td><td><%= model.age %></td></tr>
+            <tr><td><%= model.eventname %></td><td><%= model.shortdescription %></td><td><%= model.fulldescription %></td></tr>
+            <tr><td><%= model.imageurl %></td><td><%= model.eventdate %></td><td><%= model.time %></td></tr>
         <% }); %>
     </table>
