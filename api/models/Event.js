@@ -16,6 +16,7 @@ module.exports = {
     age: {
       type: "number"
     },
+
   },
 
 };

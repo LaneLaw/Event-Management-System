@@ -6,8 +6,7 @@
  */
 
 module.exports = {
-    create: async function (req, res) {
-
+    create: async function (req, res){
         if (req.method == "GET")
             return res.view('event/create');
     
@@ -18,6 +17,14 @@ module.exports = {
     
         return res.ok("Successfully created!");
     },
+
+    // action - index
+    index: async function (req, res) {
+
+         var events = await Event.find();
+         return res.view('event/index', { 'events': events });
+    
+},
 
 };
 
