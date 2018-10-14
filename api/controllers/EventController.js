@@ -6,25 +6,25 @@
  */
 
 module.exports = {
-    create: async function (req, res){
+    create: async function (req, res) {
         if (req.method == "GET")
             return res.view('event/create');
-    
+
         if (typeof req.body.Event === "undefined")
             return res.badRequest("Form-data not received.");
-    
+
         await Event.create(req.body.Event);
-    
+
         return res.ok("Successfully created!");
     },
 
     // action - index
     index: async function (req, res) {
 
-         var events = await Event.find();
-         return res.view('event/index', { 'events': events });
-    
-},
+        var events = await Event.find();
+        return res.view('event/index', { 'events': events });
+
+    },
 
 };
 

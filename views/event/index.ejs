@@ -1,7 +1,33 @@
 <!--index.ejs-->
 <table class="table">
-        <% events.forEach( function(model) { %>
-            <tr><td><%= model.eventname %></td><td><%= model.shortdescription %></td><td><%= model.fulldescription %></td></tr>
-            <tr><td><%= model.imageurl %></td><td><%= model.eventdate %></td><td><%= model.time %></td></tr>
-        <% }); %>
-    </table>
+    <% events.forEach( function(model) { %>
+    <tr>
+        <td>
+            <%= model.eventname %>
+        </td>
+        <td>
+            <%= model.shortdescription %>
+        </td>
+        <td>
+            <%= model.fulldescription %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <%= model.imageurl %>
+        </td>
+        <td>
+            <%= model.eventdate %>
+        </td>
+        <td>
+            <%= model.time %>
+        </td>
+        <td>
+            <%= model.organizer %>
+        </td>
+        <td>
+            <%= model.highlight %>
+        </td>
+    </tr>
+    <% }); %>
+</table>

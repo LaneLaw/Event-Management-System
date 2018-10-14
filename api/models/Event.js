@@ -18,16 +18,28 @@ module.exports = {
     fulldescription: {
       type: "string"
     },
-    imageurl:{
+    imageurl: {
       type: "string"
-  },
-    eventdate:{
+    },
+    eventdate: {
       type: "string"
-},
-    time:{
-     type: "string"
-},
-    
+    },
+    time: {
+      type: "string"
+    },
+    organizer: {
+      type: "string"
+    },
+    quota: {
+      type: "string"
+    },
+    venue: {
+      type: "string"
+    },
+    highlight: {
+      type: "string"
+    }
+
 
   },
 
