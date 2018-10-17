@@ -6,8 +6,16 @@
  */
 
 module.exports = {
+  getInvalidIdMsg: function (opts) {
 
+    if (typeof opts.id === "undefined" || isNaN(parseInt(opts.id)))
+      return "Event id not specified or with incorrect type.";
+
+    return null;        //falsy
+
+  },
   attributes: {
+
 
     eventname: {
       type: "string"
@@ -22,7 +30,8 @@ module.exports = {
       type: "string"
     },
     eventdate: {
-      type: "string"
+      type: "string",
+      columnType:'date'
     },
     time: {
       type: "string"

@@ -38,6 +38,7 @@ module.exports.routes = {
   '/err': {
     view: '500'
   },
+  'GET /event/view/:id': 'EventController.view',
   
 
   /***************************************************************************
