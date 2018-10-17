@@ -31,7 +31,6 @@ module.exports = {
     },
     eventdate: {
       type: "string",
-      columnType:'date'
     },
     time: {
       type: "string"

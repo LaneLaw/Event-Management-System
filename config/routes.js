@@ -39,6 +39,11 @@ module.exports.routes = {
     view: '500'
   },
   'GET /event/view/:id': 'EventController.view',
+
+  'POST /event/delete/:id': 'EventController.delete',
+
+  'POST /event/update/:id': 'EventController.update',
+
   
 
   /***************************************************************************

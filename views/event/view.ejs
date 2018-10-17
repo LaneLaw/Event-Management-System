@@ -1,32 +1,9 @@
-<table class="table">
-    <% model : ( function(model) { %>
-    <tr>
-        <td>
-            <%= model.eventname %>
-        </td>
-        <td>
-            <%= model.shortdescription %>
-        </td>
-        <td>
-            <%= model.fulldescription %>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <%= model.imageurl %>
-        </td>
-        <td>
-            <%= model.eventdate %>
-        </td>
-        <td>
-            <%= model.time %>
-        </td>
-        <td>
-            <%= model.organizer %>
-        </td>
-        <td>
-            <%= model.highlight %>
-        </td>
-    </tr>
-    <% }); %>
-</table>
+
+
+<%= event.eventname %> <%= event.id %> <%= event.shortdescription %> <%= event.imageurl %> <%= event.id %> 
+
+
+
+<form action = "/event/view" method="POST">
+
+</form>
