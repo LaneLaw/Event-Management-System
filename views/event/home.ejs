@@ -1,4 +1,3 @@
-<!--index.ejs-->
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -8,12 +7,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="navbar-brand" href="../">Home
+                <a class="navbar-brand" href="#">Home
                     <span class="sr-only">(current)</span>
                 </a>
                 <a class="nav-item nav-link" href="#">Search</a>
                 <a class="nav-item nav-link" href="event/create">Create</a>
-                <a class="nav-item nav-link disabled" href="../event">Admin</a>
+                <a class="nav-item nav-link disabled" href="event">Admin</a>
             </div>
         </div>
     </nav>
@@ -25,48 +24,13 @@
         </div>
     </div>
 
-    <table class="table">
-        <% events.forEach( function(model) { %>
-        <div>
-            <tr>
-                <td>
-                    <%= model.id %>
-                </td>
-                <td>
+    <!-- <div class="row">
+        <div id="div01" class="card col-12 col-sm-6 ">
+                <% events.forEach( function(model) { %>
+                <div>
                     <a href="event/update/<%=model.id%>">
                         <%= model.eventname %> </a>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
 
-
-                <!-- <td>
-            <%= model.shortdescription %>
-        </td>
-        <td>
-            <%= model.fulldescription %>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <%= model.imageurl %>
-        </td>
-        <td>
-            <%= model.eventdate %>
-        </td>
-        <td>
-            <%= model.time %>
-        </td>
-        <td>
-            <%= model.organizer %>
-        </td>
-        <td>
-            <%= model.highlight %>
-        </td> -->
-            </tr>
-            <% }); %>
+                </div>
         </div>
-    </table>
+    </div> -->

@@ -1,53 +1,95 @@
-<!--update.ejs-->
-<form action="/event/update/<%=event.id %>" method="POST">
-    <div class="row">
-        <div class="col-sm-6">
-            <!--Event Name-->
-            <label>Event Name:</label>
-            <input type="text" class="form-control" name="Event[eventname]" value="<%= event.eventname %>" required>
-            <!--Short Description-->
-            <label>Short Description:</label><br>
-            <textarea rows=6 type="text" class="form-control" name="Event[shortdescription]" value="<%= event.shortdescription %>" required></textarea>
-            <!--Full Description-->
-            <label>Full Description:</label><br>
-            <textarea rows=9 type="text" class="form-control" name="Event[fulldescription]" value="<%= event.fulldescription %>" required></textarea>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="navbar-brand" href="../">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-item nav-link" href="#">Search</a>
+                <a class="nav-item nav-link" href="create">Create</a>
+                <a class="nav-item nav-link disabled" href="../../../event">Admin</a>
+            </div>
         </div>
-        <div class="col-sm-6">
-            <!--Image URL-->
-            <label>Image URL:</label><br>
-            <input type="text" class="form-control" name="Event[imageurl]" value="<%= event.imageurl %>" required>
-            <!--Organizer-->
-            <label>Organizer:</label><br>
-            <select name="Event[organizer]" class="form-control" type=text value="<%= event.organizer %> ">
-                <option value="null">please pick one:</option>
-                <option value="o1">o1</option>
-                <option value="o2">o2</option>
-            </select>
-            <!--Event Date-->
-            <label>Event Date:</label><br>
-            <input type="text" class="form-control" name="Event[eventdate]" required>
-            <!--Time-->
-            <label>Time:</label><br>
-            <input type="text" class="form-control" name="Event[time]" required>
-            <!--Venue-->
-            <label>Venue:</label><br>
-            <select name="Event[venue]" class="form-control" type=text>
-                <option value="null">please pick one:</option>
-                <option value="v1">v1</option>
-                <option value="v2">v2</option>
-            </select>
-            <!--Time-->
-            <label>Quota:</label><br>
-            <input type="number" class="form-control" name="Event[quota]" required>
-            <!--highlight-->
-            <br>                
-            <input id="hl" type="checkbox" name="Event[highlight]" value = "Highlighted Event">  Highlighted Event
-
-
-            <br><br><button type="submit" class="btn btn-primary">Submit</button>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Event Management System</h1>
+            <p class="lead">HKBU Event Management System is web-based system for department and student societies to
+                broadcast events and actvities as well as registration.</p>
         </div>
     </div>
-</form>
-<form action="/event/delete/<%=event.id %>" method="POST">
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
+
+
+    <!--update.ejs-->
+    var event;
+    <form action="/event/update/<%=event.id %>" method="POST">
+        <div class="row">
+            <div class="col-sm-6">
+                <!--Event Name-->
+                <label>Event Name:</label>
+                <input type="text" class="form-control" name="Event[eventname]" value="<%= event.eventname %>" required>
+                <!--Short Description-->
+                <label>Short Description:</label><br>
+                <textarea rows=6 type="text" class="form-control" name="Event[shortdescription]" required><%= event.shortdescription %></textarea>
+                <!--Full Description-->
+                <label>Full Description:</label><br>
+                <textarea rows=9 type="text" class="form-control" name="Event[fulldescription]" required><%= event.fulldescription %></textarea>
+            </div>
+            <div class="col-sm-6">
+                <!--Image URL-->
+                <label>Image URL:</label><br>
+                <input type="text" class="form-control" name="Event[imageurl]" value="<%= event.imageurl %>" required>
+                <!--Organizer-->
+                <label>Organizer:</label><br>
+                <select name="Event[organizer]" class="form-control" type="text" value="<%= event.organizer %> ">
+                    <option value="null">please pick one:</option>
+                    <option value="<%= event.organizer %> " selected disabled hidden>
+                        <%= event.organizer %>
+                    </option>
+                    <option value="o1">o1</option>
+                    <option value="o2">o2</option>
+                </select>
+                <!--Event Date-->
+                <label>Event Date:</label><br>
+                <input type="text" class="form-control" name="Event[eventdate]" value="<%= event.eventdate %> "
+                    required>
+                <!--Time-->
+                <label>Time:</label><br>
+                <input type="text" class="form-control" name="Event[time]" value="<%= event.time %> " required>
+                <!--Venue-->
+                <label>Venue:</label><br>
+                <select name="Event[venue]" class="form-control" type="text" value="<%= event.venue %> ">
+                    <option value="null">please pick one:</option>
+                    <option value="<%= event.venue %> " selected disabled hidden>
+                        <%= event.venue %>
+                    </option>
+                    <option value="v1">v1</option>
+                    <option value="v2">v2</option>
+                </select>
+                <!--Time-->
+                <label>Quota:</label><br>
+                <input type="number" class="form-control" name="Event[quota]" value="<%= event.quota %>" required>
+                <!--highlight-->
+                <br>
+                <input id="hl" type="checkbox" name="Event[highlight]" value="Highlighted Event" onload="fn(this)" cheaked="fn(this)"> Highlighted
+                Event
+                <br><br><button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+    <form action="/event/delete/<%=event.id %>" method="POST">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+<script>
+function fn(this){
+    alert("here")
+    if(this.value = "Highlighted Event"){
+        this.cheaked
+    }
+}
+</script>

@@ -5,6 +5,14 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 module.exports = {
+    // action - home
+    home: async function (req, res) {
+
+        var allevents = await Event.find();
+        return res.view('event/home', { 'allevents': allevents });
+
+    },
+    // action - create
     create: async function (req, res) {
         if (req.method == "GET")
             return res.view('event/create');
@@ -80,8 +88,13 @@ module.exports = {
                 shortdescription: req.body.Event.shortdescription,
                 fulldescription: req.body.Event.fulldescription,
                 imageurl: req.body.Event.imageurl,
-                organizer: req.body.Event.organizer
-            }).fetch();
+                organizer: req.body.Event.organizer,
+                eventdate: req.body.Event.eventdate,
+                time: req.body.Event.time,
+                venue: req.body.Event.venue,
+                quota: req.body.Event.quota,
+                highlight: req.body.Event.highlight
+            });
 
             if (models.length == 0) return res.notFound();
 
