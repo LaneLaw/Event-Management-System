@@ -126,6 +126,22 @@ module.exports = {
 
         return res.view('event/search', { 'events': events });
     },
+    // action - paginate
+    paginate: async function (req, res) {
+
+        const qPage = Math.max(req.query.page - 1, 0) || 0;
+
+        const numOfItemsPerPage = 2;
+
+        var events = await Event.find({
+            limit: numOfItemsPerPage,
+            skip: numOfItemsPerPage * qPage
+        });
+
+        var numOfPage = Math.ceil(await Event.count() / numOfItemsPerPage);
+
+        return res.view('event/paginate', { 'events': events, 'count': numOfPage });
+    },
 
 };
 
