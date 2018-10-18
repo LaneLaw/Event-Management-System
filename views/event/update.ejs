@@ -1,8 +1,8 @@
 
     <!--update.ejs-->
 
-    <form action="/event/update/<%= event.id %>" method="POST">
-
+    <form action="/event/update/<%=event.id %>" method="POST">
+        
         <div class="row">
             <div class="col-sm-6">
                 <!--Event Name-->
@@ -32,7 +32,7 @@
                 <!--Event Date-->
                 <label>Event Date:</label>
                 <div class="input-group date" data-provide="datepicker">
-                    <input type="text" class="form-control" name="Event[eventdate]" value = "<%=event.eventdate%>" required>
+                    <input type="text" class="form-control" name="Event[eventdate]" value= "<%= event.eventdate %>" required>
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th"></span>
                     </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
     </form>
-   
+    <form action="/event/delete/<%=event.id %>" method="POST">
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
 <script>

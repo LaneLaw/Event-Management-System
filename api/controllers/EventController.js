@@ -8,7 +8,7 @@ module.exports = {
     // action - home
     home: async function (req, res) {
 
-        var events = await Event.find({limit: 4});
+        var events = await Event.find({limit: 4,sort: 'id DESC' });
         return res.view('event/home', { 'events': events });
 
     },
@@ -22,7 +22,7 @@ module.exports = {
 
         await Event.create(req.body.Event);
 
-        return res.ok("Successfully created!");
+        return res.json("Successfully created!");
     },
 
     // action - index
@@ -107,9 +107,9 @@ module.exports = {
     search: async function (req, res) {
 
         const qName = req.query.eventname || "";
-        const qAge = parseInt(req.query.id);
+        const qid = parseInt(req.query.id);
 
-        if (isNaN(qAge)) {
+        if (isNaN(qid)) {
 
             var events = await Event.find({
                 where: { eventname: { contains: qName } },
@@ -119,7 +119,7 @@ module.exports = {
         } else {
 
             var events = await Event.find({
-                where: { eventname: { contains: qName }, id: qAge },
+                where: { eventname: { contains: qName }, id: qid },
                 sort: 'id'
             });
 
