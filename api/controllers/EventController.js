@@ -8,7 +8,7 @@ module.exports = {
     // action - home
     home: async function (req, res) {
 
-        var events = await Event.find();
+        var events = await Event.find({limit: 4});
         return res.view('event/home', { 'events': events });
 
     },

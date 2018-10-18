@@ -24,19 +24,48 @@
                 broadcast events and actvities as well as registration.</p>
         </div>
     </div>
-<div class = "card">
-<div class = "eventN"><%= event.eventname %></div>
-<div><img src="<%=event.imageurl%>" height=320 width =240 style="margin: 20px;float: left">
-    <div  style="margin-top:20px;margin-left: 20px"></div>
-    <div class = "card" style="margin-left: 20px"><%= event.fulldescription%></div>
-    <nobr> <div class = "card" style="margin-left: 20px;"><b>Organizer:</b><%= event.organizer%></div></nobr>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Date:</div><%= event.eventdate%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Time:</div><%= event.time%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Venue:</div><%= event.venue%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Quota:</div><%= event.quota%></div>
+    <div class="card">
+        <div class="eventN">
+            <%= event.eventname %>
+        </div>
+        <div><img src="<%=event.imageurl%>" height=320 width=300 style="margin: 20px;float: left">
+            <div class="card" style="margin-top:20px;margin-left: 20px">
+                <table class="table table-hover">
+                    <tr>
+                        <td>
+                            <%= event.fulldescription%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Organizer:</b>
+                            <%= event.organizer%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Date:</b>
+                            <%= event.eventdate%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Time:</b>
+                            <%= event.time%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Venue:</b>
+                            <%= event.venue%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Quota:</b>
+                            <%= event.quota%>
+                        </td>
+                    </tr>
 
-</div>
+                </table>
+            </div>
+        </div>
 
-</div>
+    </div>
 
 </div>

@@ -52,8 +52,13 @@
                     <option value="o2">o2</option>
                 </select>
                 <!--Event Date-->
-                <label>Event Date:</label><br>
-                <input type="text" class="form-control" name="Event[eventdate]" required>
+                <label>Event Date:</label>
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control" name="Event[eventdate]" required>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
                 <!--Time-->
                 <label>Time:</label><br>
                 <input type="text" class="form-control" name="Event[time]" required>
@@ -68,8 +73,8 @@
                 <label>Quota:</label><br>
                 <input type="number" class="form-control" name="Event[quota]" required>
                 <!--highlight-->
-                <br>                
-                <input id="hl" type="checkbox" name="Event[highlight]" value = "Highlighted Event">  Highlighted Event
+                <br>
+                <input id="hl" type="checkbox" name="Event[highlight]" value="Highlighted Event"> Highlighted Event
 
 
                 <br><br><button type="submit" class="btn btn-primary">Submit</button>
