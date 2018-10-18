@@ -25,43 +25,75 @@
                 broadcast events and actvities as well as registration.</p>
         </div>
     </div>
-
-    <% const current = parseInt(req.query.page) || 1; %>
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="/event/paginate/?page=<%= Math.max(current-1, 1) %>">Previous</a>
-            </li>
-
-            <% for (i = 1; i <= count; i++) { %>
-            <li class="page-item">
-                <a class="page-link" href="/event/paginate/?page=<%= i %>">
-                    <%= i %></a>
-            </li>
-            <% } %>
-
-            <li class="page-item">
-                <a class="page-link" href="/event/paginate/?page=<%= Math.min(current+1, count) %>">Next</a>
-            </li>
-        </ul>
-    </nav>
-
     <div class="row">
-       
-            <% events.forEach( function(model) { %>
-        <div class="card col-12 col-lg-4">
-                <div><a href="event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=300 width=350></a><br><br>
-            <a href='event/view/<%= model.id %>' style="font-size:30px;margin: 20px">
-                <%= model.eventname %></a>
-            
-               <div style="margin: 20px"> <%= model.shortdescription%></div>
-            </div>  
+        <div>
+            <% const current = parseInt(req.query.page) || 1; %>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="/event/paginate/?page=<%= Math.max(current-1, 1) %>">Previous</a>
+                    </li>
+
+                    <% for (i = 1; i <= count; i++) { %>
+                    <li class="page-item">
+                        <a class="page-link" href="/event/paginate/?page=<%= i %>">
+                            <%= i %></a>
+                    </li>
+                    <% } %>
+
+                    <li class="page-item">
+                        <a class="page-link" href="/event/paginate/?page=<%= Math.min(current+1, count) %>">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="row">
+
+                <% events.forEach( function(model) { %>
+                <div class="card col-sm-6">
+                    <div><a href="event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=300 width=350></a><br><br>
+                        <a href='event/view/<%= model.id %>' style="font-size:30px;margin: 20px">
+                            <%= model.eventname %></a>
+
+                        <div style="margin: 20px">
+                            <%= model.shortdescription%>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
         </div>
-        <% }); %>
-        <form action="event/search">
+        <form action="event/search" method="POST" style="margin-left: 100px;margin-top:30px">
             <label>Event name:</label>
             <input type="text" class="form-control" name="Event[eventname]" required>
+            <label style="margin-top:10px">Organizer:</label><br>
+            <select name="Event[organizer]" class="form-control" type=text>
+                <option value="null">please pick one:</option>
+                <option value="o1">o1</option>
+                <option value="o2">o2</option>
+            </select>
+            <label style="margin-top:10px">Start Date:</label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control" name="Event[eventdate]" >
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+            <label style="margin-top:10px">End Date:</label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control" name="Event[eventdate]" >
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+            <label>Venue:</label><br>
+            <select name="Event[venue]" class="form-control" type=text>
+                <option value="null">please pick one:</option>
+                <option value="v1">v1</option>
+                <option value="v2">v2</option>
+            </select>
+            <button type="submit" class="btn btn-second" style="margin-top:20px">Submit</button>
         </form>
     </div>
 
