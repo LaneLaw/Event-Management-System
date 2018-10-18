@@ -75,7 +75,7 @@ module.exports = {
             var model = await Event.findOne(req.params.id);
 
             if (!model) return res.notFound();
-
+            
             return res.view('event/update', { 'event': model });
 
         } else {
@@ -98,7 +98,8 @@ module.exports = {
 
             if (models.length == 0) return res.notFound();
 
-            return res.ok("Record updated");
+           // res.redirect('/');
+         return res.json('Record updated');
 
         }
     },
