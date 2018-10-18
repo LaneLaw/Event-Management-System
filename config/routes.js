@@ -32,12 +32,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'event/home'
-  },
-  '/h': {
-    view: 'homepage'
-  },
+  '/': 'EventController.home',
+
   '/err': {
     view: '500'
   },

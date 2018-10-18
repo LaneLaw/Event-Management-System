@@ -26,7 +26,6 @@
 
 
     <!--update.ejs-->
-    var event;
     <form action="/event/update/<%=event.id %>" method="POST">
         <div class="row">
             <div class="col-sm-6">
@@ -48,7 +47,7 @@
                 <label>Organizer:</label><br>
                 <select name="Event[organizer]" class="form-control" type="text" value="<%= event.organizer %> ">
                     <option value="null">please pick one:</option>
-                    <option value="<%= event.organizer %> " selected disabled hidden>
+                    <option value="<%= event.organizer %> " selected hidden>
                         <%= event.organizer %>
                     </option>
                     <option value="o1">o1</option>
@@ -65,7 +64,7 @@
                 <label>Venue:</label><br>
                 <select name="Event[venue]" class="form-control" type="text" value="<%= event.venue %> ">
                     <option value="null">please pick one:</option>
-                    <option value="<%= event.venue %> " selected disabled hidden>
+                    <option value="<%= event.venue %> " selected hidden>
                         <%= event.venue %>
                     </option>
                     <option value="v1">v1</option>

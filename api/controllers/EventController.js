@@ -8,8 +8,8 @@ module.exports = {
     // action - home
     home: async function (req, res) {
 
-        var allevents = await Event.find();
-        return res.view('event/home', { 'allevents': allevents });
+        var events = await Event.find();
+        return res.view('event/home', { 'events': events });
 
     },
     // action - create
@@ -101,6 +101,30 @@ module.exports = {
             return res.ok("Record updated");
 
         }
+    },
+    // search function
+    search: async function (req, res) {
+
+        const qName = req.query.eventname || "";
+        const qAge = parseInt(req.query.id);
+
+        if (isNaN(qAge)) {
+
+            var events = await Event.find({
+                where: { eventname: { contains: qName } },
+                sort: 'eventname'
+            });
+
+        } else {
+
+            var events = await Event.find({
+                where: { eventname: { contains: qName }, id: qAge },
+                sort: 'id'
+            });
+
+        }
+
+        return res.view('event/search', { 'events': events });
     },
 
 };

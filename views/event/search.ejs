@@ -1,4 +1,4 @@
-<!--view.ejs-->
+<!--search.ejs-->
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -24,19 +24,49 @@
                 broadcast events and actvities as well as registration.</p>
         </div>
     </div>
-<div class = "card">
-<div class = "eventN"><%= event.eventname %></div>
-<div><img src="<%=event.imageurl%>" height=320 width =240 style="margin: 20px;float: left">
-    <div  style="margin-top:20px;margin-left: 20px"></div>
-    <div class = "card" style="margin-left: 20px"><%= event.fulldescription%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Organizer:</div><%= event.organizer%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Date:</div><%= event.eventdate%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Time:</div><%= event.time%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Venue:</div><%= event.venue%></div>
-    <div class = "card" style="margin-left: 20px"><div style="font-weight:bold">Quota:</div><%= event.quota%></div>
 
-</div>
+    <table class="table">
+        <% events.forEach( function(model) { %>
+        <div>
+            <tr>
+                <td>
+                    <%= model.id %>
+                </td>
+                <td>
+                    <a href="event/update/<%=model.id%>">
+                        <%= model.eventname %> </a>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
 
-</div>
 
-</div>
+                <!-- <td>
+            <%= model.shortdescription %>
+        </td>
+        <td>
+            <%= model.fulldescription %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <%= model.imageurl %>
+        </td>
+        <td>
+            <%= model.eventdate %>
+        </td>
+        <td>
+            <%= model.time %>
+        </td>
+        <td>
+            <%= model.organizer %>
+        </td>
+        <td>
+            <%= model.highlight %>
+        </td> -->
+            </tr>
+            <% }); %>
+        </div>
+    </table>
