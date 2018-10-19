@@ -8,7 +8,7 @@ module.exports = {
     // action - home
     home: async function (req, res) {
 
-        var events = await Event.find({limit: 4,sort: 'id DESC' });
+        var events = await Event.find({ limit: 4, sort: 'highlight' });
         return res.view('event/home', { 'events': events });
 
     },
@@ -75,7 +75,7 @@ module.exports = {
             var model = await Event.findOne(req.params.id);
 
             if (!model) return res.notFound();
-            
+
             return res.view('event/update', { 'event': model });
 
         } else {
@@ -98,8 +98,8 @@ module.exports = {
 
             if (models.length == 0) return res.notFound();
 
-           // res.redirect('/');
-         return res.json('Record updated');
+            // res.redirect('/');
+            return res.json('Record updated');
 
         }
     },
@@ -107,32 +107,33 @@ module.exports = {
     search: async function (req, res) {
 
         const qName = req.query.eventname || "";
-        const qid = parseInt(req.query.id);
+        const qOrganizer = req.query.organizer || "";
+        const qEventdateS = req.query.eventdates || "";
+        const qEventdateE = req.query.eventdatee || "";
+        const qVenue = req.query.venue || "";
         const qPage = Math.max(req.query.page - 1, 0) || 0;
 
-        if (isNaN(qid)) {
 
+        if (qName != "") {
             var events = await Event.find({
                 where: { eventname: { contains: qName } },
                 sort: 'eventname',
                 limit: 2,
-                skip: 2*qPage
+                skip: 2 * qPage
             });
-
         } else {
-
             var events = await Event.find({
-                where: { eventname: { contains: qName }, id: qid },
-                sort: 'id',
+                where: { eventname: { contains: qName }, organizer: { contains: qOrganizer }, eventdate: { '>=': qEventdateS, '<=': qEventdateE }, venue: { contains: qVenue } },
+                sort: 'eventname',
                 limit: 2,
-                skip: 2*qpage
+                skip: 2 * qPage
             });
-
         }
-
         var numOfPage = Math.ceil(await Event.count() / 2);
 
-        return res.view('event/search', { 'events': events,'count': numOfPage });
+        var url = "search?eventname=" + qName + "&organizer=" + qOrganizer + "&eventdates=" + qEventdateS + "&eventdatee=" + qEventdateE + "&venue=" + qVenue;
+
+        return res.view('event/search', { 'events': events, 'count': numOfPage, 'url': url });
     },
     // action - paginate
     paginate: async function (req, res) {
