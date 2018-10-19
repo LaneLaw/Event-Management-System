@@ -1,6 +1,4 @@
 <!--paginate.ejs-->
-
-
     <div class="row">
         <div>
             <% const current = parseInt(req.query.page) || 1; %>
@@ -27,7 +25,7 @@
             <div class="row">
 
                 <% events.forEach( function(model) { %>
-                <div class="card col-sm-6">
+                <div class="card col-lg-6">
                     <div><a href="/event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=300 width=350></a><br><br>
                         <a href='/event/view/<%= model.id %>' style="font-size:30px;margin: 20px">
                             <%= model.eventname %></a>
@@ -40,11 +38,11 @@
                 <% }); %>
             </div>
         </div>
-        <form action="/event/search" method="POST" style="margin-left: 100px;margin-top:30px">
+        <form action="/event/search" method="GET" style="margin-left: 100px;margin-top:30px">
             <label>Event name:</label>
-            <input type="text" class="form-control" name="Event[eventname]" required>
-            <label style="margin-top:10px">Organizer:</label><br>
-            <select name="Event[organizer]" class="form-control" type=text>
+            <input type="text" class="form-control" name="eventname" required>
+            <label style="margin-top:10px">Organizer:</label>< br>
+            <select name="organizer" class="form-control" type=text>
                 <option value="null">please pick one:</option>
                 <option value="o1">o1</option>
                 <option value="o2">o2</option>

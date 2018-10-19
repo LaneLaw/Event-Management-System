@@ -108,24 +108,31 @@ module.exports = {
 
         const qName = req.query.eventname || "";
         const qid = parseInt(req.query.id);
+        const qPage = Math.max(req.query.page - 1, 0) || 0;
 
         if (isNaN(qid)) {
 
             var events = await Event.find({
                 where: { eventname: { contains: qName } },
-                sort: 'eventname'
+                sort: 'eventname',
+                limit: 2,
+                skip: 2*qPage
             });
 
         } else {
 
             var events = await Event.find({
                 where: { eventname: { contains: qName }, id: qid },
-                sort: 'id'
+                sort: 'id',
+                limit: 2,
+                skip: 2*qpage
             });
 
         }
 
-        return res.view('event/search', { 'events': events });
+        var numOfPage = Math.ceil(await Event.count() / 2);
+
+        return res.view('event/search', { 'events': events,'count': numOfPage });
     },
     // action - paginate
     paginate: async function (req, res) {
