@@ -1,47 +1,53 @@
-
-
-    <table class="table" style="font-family:arial,sans-serif ;border-collapse: collapse;">
-        <% events.forEach( function(model) { %>
-        <div>
-            <tr>
-                <td>
-                    <%= model.id %>
-                </td>
-                <td>
-                    <a href="event/update/<%=model.id%>">
-                        <%= model.eventname %> </a>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-
-                <!-- <td>
-            <%= model.shortdescription %>
-        </td>
-        <td>
-            <%= model.fulldescription %>
-        </td>
-    </tr>
+<table class="table" style="font-family:arial,sans-serif ;border-collapse: collapse;">
     <tr>
-        <td>
-            <%= model.imageurl %>
-        </td>
-        <td>
-            <%= model.eventdate %>
-        </td>
-        <td>
-            <%= model.time %>
-        </td>
-        <td>
-            <%= model.organizer %>
-        </td>
-        <td>
-            <%= model.highlight %>
-        </td> -->
-            </tr>
-            <% }); %>
-        </div>
-    </table>
+        <col width="60">
+        <col width="200">
+        <col width="200">
+        <col width="100">
+        <col width="100">
+        <col width="100">
+        <th>
+            ID
+        </th>
+        <th>
+            EventName
+        </th>
+        <th>
+            Organizer
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <% events.forEach( function(model) { %>
+    <div>
+        <tr>
+            <td>
+                <%= model.id %>
+            </td>
+            <td>
+                <a href="event/update/<%=model.id%>">
+                    <%= model.eventname %> </a>
+            </td>
+            <td>
+                <%= model.organizer %>
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" onclick="updateEvent('<%= model.id %>')">Update</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" onclick="deleteEvent('<%= model.id %>')">Delete</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-info" onclick="registerEvent('<%= model.id %>')">Registration</button>
+            </td>
+        </tr>
+        <% }); %>
+    </div>
+</table>
