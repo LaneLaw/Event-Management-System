@@ -51,3 +51,29 @@
         <% }); %>
     </div>
 </table>
+
+<script>
+
+    async function deleteEvent(id) {
+
+
+        var r = confirm("Confirm Delete?");
+        if (r == true) {
+
+            var response = await fetch("/event/" + id, {
+                method: "DELETE",
+                credentials: 'same-origin',
+            });
+
+            console.log(response);
+
+
+        }
+
+
+    };
+    async function updateEvent(id) {
+
+        redirct("/event/update/" + id)
+        }
+</script>
