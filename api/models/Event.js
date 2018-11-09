@@ -46,10 +46,14 @@ module.exports = {
     },
     highlight: {
       type: "string"
+    },
+    beReg: {
+      collection: 'User',
+      via: 'register'
     }
 
-
   },
+
 
 };
 

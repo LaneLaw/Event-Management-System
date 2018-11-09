@@ -151,6 +151,22 @@ module.exports = {
 
         return res.view('event/paginate', { 'events': events, 'count': numOfPage });
     },
+    // action - populate
+    populate: async function (req, res) {
+
+        if (!['beReg'].includes(req.params.association)) return res.notFound();
+
+        const message = sails.getInvalidIdMsg(req.params);
+
+        if (message) return res.badRequest(message);
+
+        var model = await Person.findOne(req.params.id).populate(req.params.association);
+
+        if (!model) return res.notFound();
+
+        return res.json(model);
+
+    },
 
 };
 
