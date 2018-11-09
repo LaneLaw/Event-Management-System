@@ -58,7 +58,7 @@ module.exports = {
 
         var models = await Event.destroy(req.params.id);
 
-        if (models.length == 0) return res.notFound();
+        if (models == 0) return res.notFound();
 
         return res.ok("Event Deleted.");
 
@@ -94,12 +94,12 @@ module.exports = {
                 venue: req.body.Event.venue,
                 quota: req.body.Event.quota,
                 highlight: req.body.Event.highlight
-            });
+            }).fetch();
 
             if (models.length == 0) return res.notFound();
 
             // res.redirect('/');
-            return res.json('Record updated');
+            return res.ok('Record updated');
 
         }
     },

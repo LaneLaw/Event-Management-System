@@ -30,15 +30,18 @@ module.exports = {
         req.session.regenerate(function (err) {
 
             if (err) return res.serverError(err);
-
             req.session.username = req.body.username;
             req.session.role = req.body.role;
 
-            sails.log("Session: " + JSON.stringify(req.session));
+            sails.log("Session: " + JSON.stringify(req.session.role));
 
             // return res.json(req.session);
 
-            return res.json("Login successfully");
+            if (req.wantsJSON){
+                return res.redirect('/');
+            } else {
+                return res.ok("Login successfully");
+            }
 
         });
 

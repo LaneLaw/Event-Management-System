@@ -21,12 +21,17 @@ module.exports = {
     password: {
       type: "string"
     },
+    
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
 
-
+    role: {
+      type: 'string',
+      enum: ['admin', 'student', 'everyone'],
+      defaultsTo: 'everyone',
+    },
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
@@ -34,11 +39,7 @@ module.exports = {
       collection: 'Event',
       via: 'beReg'
     },
-    role: {
-      type: 'string',
-      enum: ['admin', 'student', 'everyone'],
-      defaultsTo: 'everyone'
-    },
+ 
   },
 
 };

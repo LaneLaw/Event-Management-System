@@ -91,7 +91,7 @@
             <%}else if(req.session.role == "student"){%>
               <a class="nav-item nav-link justify-content-end" href="/user/logout">
                 <%=session.username%>logout</a>
-              <%}else if(req.session.role == "admin"){%>
+              <%}else if(req.session.role == 'admin'){%>
                 <a class="nav-item nav-link justify-content-end" href="/user/logout">
                   <%=session.username%>logout</a>
                 <%}%>
