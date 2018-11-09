@@ -160,7 +160,7 @@ module.exports = {
 
         if (message) return res.badRequest(message);
 
-        var model = await Person.findOne(req.params.id).populate(req.params.association);
+        var model = await Event.findOne(req.params.id).populate(req.params.association);
 
         if (!model) return res.notFound();
 

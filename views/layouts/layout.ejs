@@ -85,6 +85,17 @@
                           <a class="nav-item nav-link " href="/event">Admin</a>
                           <%}%>
         </div>
+        <div class="collapse navbar-collapse justify-content-end">
+          <%if(req.session.role == "everyone"){%>
+            <a class="nav-item nav-link justify-content-end" href="/user/login">login</a>
+            <%}else if(req.session.role == "student"){%>
+              <a class="nav-item nav-link justify-content-end" href="/user/logout">
+                <%=session.username%>logout</a>
+              <%}else if(req.session.role == "admin"){%>
+                <a class="nav-item nav-link justify-content-end" href="/user/logout">
+                  <%=session.username%>logout</a>
+                <%}%>
+        </div>
       </div>
     </nav>
     <div class="jumbotron jumbotron-fluid">

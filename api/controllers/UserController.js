@@ -32,6 +32,7 @@ module.exports = {
             if (err) return res.serverError(err);
 
             req.session.username = req.body.username;
+            req.session.role = req.body.role;
 
             sails.log("Session: " + JSON.stringify(req.session));
 

@@ -9,7 +9,11 @@
  */
 
 module.exports.policies = {
+  EventController: {
 
+    create: 'isAdmin'
+
+}
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions, unless overridden.       *

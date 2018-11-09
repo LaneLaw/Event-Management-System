@@ -13,7 +13,9 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     username: {
-      type: "string"
+      type: 'string',
+      unique: true,
+      required: true
     },
 
     password: {
@@ -31,6 +33,11 @@ module.exports = {
     register: {
       collection: 'Event',
       via: 'beReg'
+    },
+    role: {
+      type: 'string',
+      enum: ['admin', 'student', 'everyone'],
+      defaultsTo: 'everyone'
     },
   },
 
