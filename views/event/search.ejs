@@ -1,23 +1,23 @@
-<!--paginate.ejs-->
+<!--search.ejs-->
 <div class="row">
-    <div>
+    <div class="card col-lg-9">
         <% const current = parseInt(req.query.page) || 1; %>
 
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link" href="/event/search/?<%=url%>page=<%= Math.max(current-1, 1) %>">Previous</a>
+                    <a class="page-link" href="/event/<%=url%>&page=<%= Math.max(current-1, 1) %>#">Previous</a>
                 </li>
 
                 <% for (i = 1; i <= count; i++) { %>
                 <li class="page-item">
-                    <a class="page-link" href="/event/search/?<%=url%>page=<%= i %>">
+                    <a class="page-link" href="/event/<%=url%>&page=<%= i %>#">
                         <%= i %></a>
                 </li>
                 <% } %>
 
                 <li class="page-item">
-                    <a class="page-link" href="/event/search/?<%=url%>page=<%= Math.min(current+1, count) %>">Next</a>
+                    <a class="page-link" href="/event/<%=url%>&page=<%= Math.min(current+1, count) %>#">Next</a>
                 </li>
             </ul>
         </nav>
@@ -26,7 +26,7 @@
 
             <% events.forEach( function(model) { %>
             <div class="card col-lg-6">
-                <div><a href="/event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=300 width=350></a><br><br>
+                <div><a href="/event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=300 width=390></a><br><br>
                     <a href='/event/view/<%= model.id %>' style="font-size:30px;margin: 20px">
                         <%= model.eventname %></a>
 
@@ -35,9 +35,11 @@
                     </div>
                 </div>
             </div>
+            
             <% }); %>
         </div>
     </div>
+    <div class = "col-lg-3">
     <form action="/event/search" method="GET" style="margin-left: 100px;margin-top:30px">
         <label>Event name:</label>
         <input type="text" class="form-control" name="eventname">
@@ -49,14 +51,14 @@
         </select>
         <label style="margin-top:10px">Start Date:</label>
         <div class="input-group date" data-provide="datepicker">
-            <input type="text" class="form-control" name="eventdates" >
+            <input type="text" class="form-control" name="eventdates">
             <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th"></span>
             </div>
         </div>
         <label style="margin-top:10px">End Date:</label>
         <div class="input-group date" data-provide="datepicker">
-            <input type="text" class="form-control" name="eventdatee" >
+            <input type="text" class="form-control" name="eventdatee">
             <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th"></span>
             </div>
@@ -70,4 +72,3 @@
         <button type="submit" class="btn btn-second" style="margin-top:20px">Submit</button>
     </form>
 </div>
-

@@ -64,13 +64,55 @@ module.exports.bootstrap = async function (done) {
       "quota": "123",
       "highlight": "Highlighted Event",
     },
+    {
+      "eventname": "A complex event",
+      "shortdescription": "This is an innitial event",
+      "fulldescription": "This event is saved in bootstrap.js",
+      "imageurl": "https://pic1.zhimg.com/80/v2-40b17763b4eb99ed91c3be971516cc98_hd.jpg",
+      "organizer": "o2",
+      "eventdate": "11/26/2018",
+      "time": "3:00",
+      "venue": "v2",
+      "quota": "123",
+      "highlight": "Highlighted Event",
+    },
+    {
+      "eventname": "A simple event copy",
+      "shortdescription": "This is an innitial event",
+      "fulldescription": "This event is saved in bootstrap.js",
+      "imageurl": "https://pic1.zhimg.com/80/v2-40b17763b4eb99ed91c3be971516cc98_hd.jpg",
+      "organizer": "o2",
+      "eventdate": "11/26/2018",
+      "time": "3:00",
+      "venue": "v2",
+      "quota": "123",
+      "highlight": "Highlighted Event",
+    },
+    {
+      "eventname": "A complex event copy",
+      "shortdescription": "This is an innitial event",
+      "fulldescription": "This event is saved in bootstrap.js",
+      "imageurl": "https://pic1.zhimg.com/80/v2-40b17763b4eb99ed91c3be971516cc98_hd.jpg",
+      "organizer": "o2",
+      "eventdate": "11/26/2018",
+      "time": "3:00",
+      "venue": "v2",
+      "quota": "123",
+      "highlight": "Highlighted Event",
+    },
     // etc.
   ]);
   const sim = await Event.findOne({ eventname: "A simple event" });
+  const simc = await Event.findOne({ eventname: "A simple event copy" });
+  const com = await Event.findOne({ eventname: "A complex event" });
+  const comc = await Event.findOne({ eventname: "A complex event copy" });
 
   const admin = await User.findOne({ username: "admin" });
 
   await User.addToCollection(admin.id, 'register').members(sim.id);
+  await User.addToCollection(admin.id, 'register').members(com.id);
+  await User.addToCollection(admin.id, 'register').members(simc.id);
+  await User.addToCollection(admin.id, 'register').members(comc.id);
   // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
   // (otherwise your server will never lift, since it's waiting on the bootstrap)
   return done();
