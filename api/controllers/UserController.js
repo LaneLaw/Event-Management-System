@@ -85,9 +85,9 @@ module.exports = {
 
     },
     add: async function (req, res) {
-
+        
         if (!['register'].includes(req.params.association)) return res.notFound();
-    
+
         const message = sails.getInvalidIdMsg(req.params);
     
         if (message) return res.badRequest(message);
@@ -100,8 +100,12 @@ module.exports = {
         
         await User.addToCollection(req.params.id, req.params.association).members(req.params.fk);
     
-        return res.ok('Operation completed.');
-    
+        
+        if (req.wantsJSON) {
+            return res.redirect('/');
+        } else {
+            return res.ok("operation complete！");
+        }
     },
     remove: async function (req, res) {
 

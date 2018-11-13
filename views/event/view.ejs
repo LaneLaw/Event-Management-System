@@ -56,9 +56,13 @@
 <script>
     function reg(id,user_id) {
         
-        window.location = "/user/register/"+ user_id +"/add/"+id;
+        window.location = "/user/"+ user_id +"/register/add/"+id;
+            window.location = response.url;
+       
     }
     function dereg(id,user_id) {
-        window.location = "/user/register/"+ user_id +"/remove/"+id;
+        window.location = "/user/"+ user_id +"/register/remove/"+id;
+        alert("Operation complete!")
+ 
     }
 </script>
