@@ -6,18 +6,18 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" href="/event/search/page=<%= Math.max(current-1, 1) %>">Previous</a>
+                        <a class="page-link" href="/user/<%=req.session.user_id%>/register/?page=<%= Math.max(current-1, 1) %>">Previous</a>
                     </li>
 
                     <% for (i = 1; i <= count; i++) { %>
                     <li class="page-item">
-                        <a class="page-link" href="/event/search/page=<%= i %>">
+                        <a class="page-link" href="/user/<%=req.session.user_id%>/?page=<%= i %>">
                             <%= i %></a>
                     </li>
                     <% } %>
 
                     <li class="page-item">
-                        <a class="page-link" href="/event/search/page=<%= Math.min(current+1, count) %>">Next</a>
+                        <a class="page-link" href="/user/<%=req.session.user_id%>/?page=<%= Math.min(current+1, count) %>">Next</a>
                     </li>
                 </ul>
             </nav>

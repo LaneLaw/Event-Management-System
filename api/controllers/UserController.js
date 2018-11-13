@@ -70,10 +70,16 @@ module.exports = {
         var model = await User.findOne(req.params.id).populate(req.params.association);
 
         if (!model) return res.notFound();
+        
+        // const qPage = Math.max(req.query.page - 1, 0) || 0;
+        // var models = await model.register({
+        //     limit:2,
+        //     skip:2*qPage,
+        // })
 
         var numOfPage = Math.ceil(await model.register.length/ 3);
 
-        return res.view('user/register', { 'model': model.register,'count': numOfPage, });
+        return res.view('user/register', { 'model': models,'count': numOfPage, });
 
     },
     add: async function (req, res) {

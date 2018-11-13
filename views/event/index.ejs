@@ -64,7 +64,7 @@
                 method: "DELETE",
                 credentials: 'same-origin',
             });
-            
+
             console.log(response);
 
             alert("successfully delete!")
@@ -77,5 +77,10 @@
     async function updateEvent(id) {
 
         window.location.href = "/event/update/" + id;
-        }
+    }
+
+    async function registerEvent(id) {
+
+        var response = await fetch("/user/<%=req.session.user_id%>/register/add/" + id)
+    }
 </script>

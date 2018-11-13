@@ -67,6 +67,7 @@
           <a class="navbar-brand" href="/">Home
             <span class="sr-only">(current)</span>
           </a>
+          <%if(req.session.role=='admin'){%>
           <%if(req.path=="/event/search"){%>
           <a class="nav-item nav-link active" href="/event/search">Search</a>
           <%}else {%>
@@ -96,6 +97,60 @@
           <%}else{%>
           <a class="nav-item nav-link justify-content-end" href="/user/login">login</a>
           <%}%>
+          
+
+          <%}else if(req.session.role=='student'){%>
+          <%if(req.path=="/event/search"){%>
+          <a class="nav-item nav-link active" href="/event/search">Search</a>
+          <%}else {%>
+          <a class="nav-item nav-link" href="/event/search">Search</a>
+          <%}%>
+
+          <%if(req.path=="/event"){%>
+          <a class="nav-item nav-link active" href="/user/<%=req.session.user_id%>/register">Registration</a>
+          <%}else {%>
+          <a class="nav-item nav-link " href="/user/<%=req.session.user_id%>/register">Registration</a>
+          <%}%>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end">
+
+          <%if(req.session.role == "student"){%>
+          <a class="nav-item nav-link justify-content-end" href="/user/logout">
+            (<%=session.username%>)&nbsp logout</a>
+          <%}else if(req.session.role == 'admin'){%>
+          <a class="nav-item nav-link justify-content-end" href="/user/logout">
+            (<%=session.username%>)&nbsp logout</a>
+
+          <%}else{%>
+          <a class="nav-item nav-link justify-content-end" href="/user/login">login</a>
+          <%}%>
+        
+
+          <%}else{%>
+            <%if(req.path=="/event/search"){%>
+            <a class="nav-item nav-link active" href="/event/search">Search</a>
+            <%}else {%>
+            <a class="nav-item nav-link" href="/event/search">Search</a>
+            <%}%>
+  
+          
+          </div>
+          <div class="collapse navbar-collapse justify-content-end">
+  
+            <%if(req.session.role == "student"){%>
+            <a class="nav-item nav-link justify-content-end" href="/user/logout">
+              (<%=session.username%>)&nbsp logout</a>
+            <%}else if(req.session.role == 'admin'){%>
+            <a class="nav-item nav-link justify-content-end" href="/user/logout">
+              (<%=session.username%>)&nbsp logout</a>
+  
+            <%}else{%>
+            <a class="nav-item nav-link justify-content-end" href="/user/login">login</a>
+            <%}%>
+            <%}%>
+          
+
+          
 
         </div>
       </div>
