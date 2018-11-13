@@ -15,16 +15,16 @@ module.exports.policies = {
     update: 'isAdmin',
     populate: 'isAdmin',
     index: 'isAdmin',
-   
 
-},
-// UserController: {
 
-//   populate:'isStudent',
-//   add:'isStudent',
-//   remove:'isStudent'
+  },
+  UserController: {
 
-// }
+    populate: 'isStudent',
+    add: 'isStudent',
+    remove: 'isStudent'
+
+  }
 
   /***************************************************************************
   *                                                                          *

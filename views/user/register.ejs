@@ -31,25 +31,28 @@
                 <div><a href="/event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=200 width=350></a><br><br>
                     <a href='/event/view/<%= model.id %>' style="font-size:30px;margin: 20px">
                         <%= model.eventname %></a>
-<div class="card" style= "margin: 20px">
-                    <table>
-                        <tr>
-                            <td>
-                                    Date: <%= model.eventdate %>
+                    <div class="card" style="margin: 20px">
+                        <table>
+                            <tr>
+                                <td>
+                                    Date:
+                                    <%= model.eventdate %>
                                 </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                    Time: <%= model.time %>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Time:
+                                    <%= model.time %>
                                 </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                    Venue: <%= model.venue %>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Venue:
+                                    <%= model.venue %>
                                 </td>
-                        </tr>
-                    </table>
-</div>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
 

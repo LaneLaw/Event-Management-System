@@ -67,7 +67,7 @@ module.exports = {
     update: async function (req, res) {
 
         var message = Event.getInvalidIdMsg(req.params);
-
+sails.log(req.params);
         if (message) return res.badRequest(message);
 
         if (req.method == "GET") {

@@ -71,60 +71,56 @@ module.exports = {
 
         if (!model) return res.notFound();
 
-        
-        
+
+
         // const qPage = Math.max(req.query.page - 1, 0) || 0;
         // var models = await model.register({
         //     limit:2,
         //     skip:2*qPage,
         // })
 
-        var numOfPage = Math.ceil(await model.register.length/ 3);
+        var numOfPage = Math.ceil(await model.register.length / 3);
 
-        return res.view('user/register', { 'model': model.register,'count': numOfPage, });
+        return res.view('user/register', { 'model': model.register, 'count': numOfPage, });
 
     },
     add: async function (req, res) {
-        
+
         if (!['register'].includes(req.params.association)) return res.notFound();
 
         const message = sails.getInvalidIdMsg(req.params);
-    
+
         if (message) return res.badRequest(message);
-    
+
         if (!await User.findOne(req.params.id)) return res.notFound();
-    
+
         if (req.params.association == "register") {
             if (!await Event.findOne(req.params.fk)) return res.notFound();
         }
-        
+
         await User.addToCollection(req.params.id, req.params.association).members(req.params.fk);
-    
-        
-        if (req.wantsJSON) {
-            return res.redirect('/');
-        } else {
-            return res.ok("operation complete！");
-        }
+
+
+        return res.redirect('/');
     },
     remove: async function (req, res) {
 
         if (!['register'].includes(req.params.association)) return res.notFound();
-    
+
         const message = sails.getInvalidIdMsg(req.params);
-    
+
         if (message) return res.badRequest(message);
-    
+
         if (!await User.findOne(req.params.id)) return res.notFound();
-    
+
         if (req.params.association == "register") {
             if (!await Event.findOne(req.params.fk)) return res.notFound();
         }
-    
+
         await User.removeFromCollection(req.params.id, req.params.association).members(req.params.fk);
-    
-        return res.ok('Operation completed.');
-    
+
+        return res.redirect('/');
+
     },
 };
 
