@@ -36,14 +36,17 @@ module.exports = {
     view: async function (req, res) {
 
         var message = Event.getInvalidIdMsg(req.params);
-
+        sails.log(req.params);
         if (message) return res.badRequest(message);
 
         var model = await Event.findOne(req.params.id);
 
         if (!model) return res.notFound();
 
-        return res.view('event/view', { 'event': model });
+        // var username = await User.findOne(req.session.user_id).populate('register');
+        var models = await User.findOne(req.session.user_id).populate('register');
+
+        return res.view('event/view', { 'event': model,'models': models.register });
 
     },
 
@@ -67,7 +70,7 @@ module.exports = {
     update: async function (req, res) {
 
         var message = Event.getInvalidIdMsg(req.params);
-sails.log(req.params);
+
         if (message) return res.badRequest(message);
 
         if (req.method == "GET") {

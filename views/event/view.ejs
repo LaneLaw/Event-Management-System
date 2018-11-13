@@ -35,6 +35,7 @@
                 <tr>
                     <td><b>Quota:</b>
                         <%= event.quota%>
+
                     </td>
                 </tr>
 
@@ -44,27 +45,48 @@
 </div>
 <div style="margin: 20px;">
 
-</div>
+</div><%var bo = 'true';%>
+<% models.every( function(model){  %>
+   
+<%if(model.id == event.id){bo = 'false'%>
 <div>
+    <button type="button" class="btn btn-danger" onclick="dereg('<%= event.id%>','<%=req.session.user_id%>')">Cancel</button>
+</div>
+
+<%return false;}else{return true;}%>
+
+
+<%}); %>
+<%if(bo == 'true'){%>
+    <div>
+        <button type="button" class="btn btn-info" onclick="reg('<%= event.id%>','<%=req.session.user_id%>')">registration</button>
+    </div>
+    
+    <%}%>
+
+
+
+
+<!-- <div>
     <button type="button" class="btn btn-info" onclick="reg('<%= event.id%>','<%=req.session.user_id%>')">registration</button>
 </div>
 
 <div>
     <button type="button" class="btn btn-danger" onclick="dereg('<%= event.id%>','<%=req.session.user_id%>')">Cancel</button>
-</div>
+</div> -->
 
 <script>
-    function reg(id,user_id) {
-        
-        window.location = "/user/"+ user_id +"/register/add/"+id;
+    function reg(id, user_id) {
+
+        window.location = "/user/" + user_id + "/register/add/" + id;
         alert("Operation complete!")
         window.location = response.url;
-       
+
     }
-    function dereg(id,user_id) {
-        window.location = "/user/"+ user_id +"/register/remove/"+id;
+    function dereg(id, user_id) {
+        window.location = "/user/" + user_id + "/register/remove/" + id;
         alert("Operation complete!")
         window.location = response.url;
- 
+
     }
 </script>

@@ -87,7 +87,7 @@ module.exports = {
     add: async function (req, res) {
 
         if (!['register'].includes(req.params.association)) return res.notFound();
-
+        
         const message = sails.getInvalidIdMsg(req.params);
 
         if (message) return res.badRequest(message);
