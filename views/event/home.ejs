@@ -1,21 +1,22 @@
-
-   
-
-
-    <div class="row">
-        <% events.forEach( function(model) { %>
-
-        <div class="card col-12 col-sm-6 ">
-            <a href='event/view/<%= model.id %>' style="margin:10px">
-                <%= model.eventname %></a>
-            <div><a href="event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=160 width=120 style="margin-bottom: 30px;margin-left:10px;margin-right:30px;margin-top:10px;float: left"></a>
-                <%= model.shortdescription%>
-            </div>
-
+<div class="row">
+    <% events.forEach( function(model) { %>
+<%if(req.session.role =='admin'||req.session.role =='student'){%>
+    <div class="card col-12 col-sm-6 ">
+        <a href='event/view/<%= model.id %>' style="margin:10px">
+            <%= model.eventname %></a>
+        <div><a href="event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=160 width=120 style="margin-bottom: 30px;margin-left:10px;margin-right:30px;margin-top:10px;float: left"></a>
+            <%= model.shortdescription%>
         </div>
 
-
-        <% }); %>
     </div>
+<%}else{%>
+    <div class="card col-12 col-sm-6 ">
+        <a href='event/view1/<%= model.id %>' style="margin:10px">
+            <%= model.eventname %></a>
+        <div><a href="event/view/<%= model.id %>"><img src="<%=model.imageurl%>" height=160 width=120 style="margin-bottom: 30px;margin-left:10px;margin-right:30px;margin-top:10px;float: left"></a>
+            <%= model.shortdescription%>
+        </div>
 
+    </div>
+    <%} }); %>
 </div>

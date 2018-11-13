@@ -36,17 +36,31 @@ module.exports = {
     view: async function (req, res) {
 
         var message = Event.getInvalidIdMsg(req.params);
-        sails.log(req.params);
+    
         if (message) return res.badRequest(message);
 
         var model = await Event.findOne(req.params.id);
 
         if (!model) return res.notFound();
 
-        // var username = await User.findOne(req.session.user_id).populate('register');
+        
         var models = await User.findOne(req.session.user_id).populate('register');
 
         return res.view('event/view', { 'event': model,'models': models.register });
+
+    },
+    view1: async function (req, res) {
+
+        var message = Event.getInvalidIdMsg(req.params);
+     
+        if (message) return res.badRequest(message);
+
+        var model = await Event.findOne(req.params.id);
+
+        if (!model) return res.notFound();
+
+
+        return res.view('event/view1', { 'event': model});
 
     },
 
