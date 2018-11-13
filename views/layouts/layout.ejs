@@ -106,10 +106,10 @@
           <a class="nav-item nav-link" href="/event/search">Search</a>
           <%}%>
 
-          <%if(req.path=="/event"){%>
-          <a class="nav-item nav-link active" href="/user/<%=req.session.user_id%>/register">Registration</a>
+          <%if(req.path=="/user/" + session.user_id + "/register"){%>
+          <a class="nav-item nav-link active" href="/user/<%=req.session.user_id%>/register">My Registered Event</a>
           <%}else {%>
-          <a class="nav-item nav-link " href="/user/<%=req.session.user_id%>/register">Registration</a>
+          <a class="nav-item nav-link " href="/user/<%=req.session.user_id%>/register">My Registered Event</a>
           <%}%>
         </div>
         <div class="collapse navbar-collapse justify-content-end">

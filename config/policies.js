@@ -18,13 +18,13 @@ module.exports.policies = {
    
 
 },
-UserController: {
+// UserController: {
 
-  populate:'isStudent',
-  add:'isStudent',
-  remove:'isStudent'
+//   populate:'isStudent',
+//   add:'isStudent',
+//   remove:'isStudent'
 
-}
+// }
 
   /***************************************************************************
   *                                                                          *

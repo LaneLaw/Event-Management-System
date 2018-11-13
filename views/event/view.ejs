@@ -46,18 +46,19 @@
 
 </div>
 <div>
-    <button type="button" class="btn btn-info" onclick="reg('<%= event.id%>')">registration</button>
+    <button type="button" class="btn btn-info" onclick="reg('<%= event.id%>','<%=req.session.user_id%>')">registration</button>
 </div>
 
 <div>
-    <button type="button" class="btn btn-danger" onclick="dereg('<%= event.id%>')">Cancel</button>
+    <button type="button" class="btn btn-danger" onclick="dereg('<%= event.id%>','<%=req.session.user_id%>')">Cancel</button>
 </div>
 
 <script>
-    function reg(id) {
-
+    function reg(id,user_id) {
+        
+        window.location = "/user/register/"+ user_id +"/add/"+id;
     }
-    function dereg(id) {
-
+    function dereg(id,user_id) {
+        window.location = "/user/register/"+ user_id +"/remove/"+id;
     }
 </script>

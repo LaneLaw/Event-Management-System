@@ -34,10 +34,6 @@ module.exports.routes = {
 
  'DELETE /event/:id': 'EventController.delete',
 
- '/event/populate': { view: '404' },
- '/user/populate': { view: '404' },
- '/user/add': { view: '404' },
- '/user/remove': { view: '404' },
 
  '/event/:id/:association': 'EventController.populate',
  '/user/:id/:association': 'UserController.populate',
