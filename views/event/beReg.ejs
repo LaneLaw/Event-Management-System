@@ -1,0 +1,13 @@
+<% model.forEach( function(model) { %>
+<table class="table table-hover">
+
+        <tr>
+            <td><b>Student id:</b>
+              <%=model.id%>
+            </td>
+            <td><b>Student name:</b>
+                <%=model.username%>
+              </td>
+        </tr>
+    </table>
+    <% }); %>

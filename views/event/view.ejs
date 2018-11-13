@@ -1,47 +1,63 @@
 <!--view.ejs-->
 
-    <div class="card">
-        <div class="eventN">
-            <%= event.eventname %>
-        </div>
-        <div><img src="<%=event.imageurl%>" height=320 width=300 style="margin: 20px;float: left">
-            <div class="card" style="margin-top:20px;margin-left: 20px">
-                <table class="table table-hover">
-                    <tr>
-                        <td>
-                            <%= event.fulldescription%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Organizer:</b>
-                            <%= event.organizer%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Date:</b>
-                            <%= event.eventdate%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Time:</b>
-                            <%= event.time%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Venue:</b>
-                            <%= event.venue%>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Quota:</b>
-                            <%= event.quota%>
-                        </td>
-                    </tr>
-
-                </table>
-            </div>
-        </div>
-
+<div class="card">
+    <div class="eventN">
+        <%= event.eventname %>
     </div>
+    <div><img src="<%=event.imageurl%>" height=320 width=300 style="margin: 20px;float: left">
+        <div class="card" style="margin-top:20px;margin-left: 20px">
+            <table class="table table-hover">
+                <tr>
+                    <td>
+                        <%= event.fulldescription%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Organizer:</b>
+                        <%= event.organizer%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Date:</b>
+                        <%= event.eventdate%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Time:</b>
+                        <%= event.time%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Venue:</b>
+                        <%= event.venue%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Quota:</b>
+                        <%= event.quota%>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+<div style="margin: 20px;">
 
 </div>
+<div>
+    <button type="button" class="btn btn-info" onclick="reg('<%= event.id%>')">registration</button>
+</div>
+
+<div>
+    <button type="button" class="btn btn-danger" onclick="dereg('<%= event.id%>')">Cancel</button>
+</div>
+
+<script>
+    function reg(id) {
+
+    }
+    function dereg(id) {
+
+    }
+</script>

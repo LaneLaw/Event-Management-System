@@ -70,6 +70,8 @@ module.exports = {
         var model = await User.findOne(req.params.id).populate(req.params.association);
 
         if (!model) return res.notFound();
+
+        
         
         // const qPage = Math.max(req.query.page - 1, 0) || 0;
         // var models = await model.register({
@@ -79,7 +81,7 @@ module.exports = {
 
         var numOfPage = Math.ceil(await model.register.length/ 3);
 
-        return res.view('user/register', { 'model': models,'count': numOfPage, });
+        return res.view('user/register', { 'model': model.register,'count': numOfPage, });
 
     },
     add: async function (req, res) {
@@ -95,7 +97,7 @@ module.exports = {
         if (req.params.association == "register") {
             if (!await Event.findOne(req.params.fk)) return res.notFound();
         }
-    
+        
         await User.addToCollection(req.params.id, req.params.association).members(req.params.fk);
     
         return res.ok('Operation completed.');

@@ -11,9 +11,21 @@
 module.exports.policies = {
   EventController: {
 
-    create: 'isAdmin'
+    create: 'isAdmin',
+    update: 'isAdmin',
+    populate: 'isAdmin',
+    index: 'isAdmin',
+   
+
+},
+UserController: {
+
+  populate:'isStudent',
+  add:'isStudent',
+  remove:'isStudent'
 
 }
+
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions, unless overridden.       *

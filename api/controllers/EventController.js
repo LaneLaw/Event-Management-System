@@ -164,8 +164,8 @@ module.exports = {
 
         if (!model) return res.notFound();
 
-        return res.json(model);
-
+        // return res.json(model);
+        return res.view('event/beReg', { 'model': model.beReg});
     },
     customToJSON: function() {
         // Return a shallow copy of this record with the password removed.

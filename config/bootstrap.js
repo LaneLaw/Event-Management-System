@@ -48,7 +48,9 @@ module.exports.bootstrap = async function (done) {
 
   await User.createEach([
     { "username": "admin", "password": hash, "role":"admin"  },
-    { "username": "student", "password": hash,"role":"student" }
+    { "username": "student0", "password": hash,"role":"student" },
+    { "username": "student1", "password": hash,"role":"student" },
+    { "username": "student2", "password": hash,"role":"student" },
     // etc.
   ]);
   await Event.createEach([
@@ -107,12 +109,24 @@ module.exports.bootstrap = async function (done) {
   const com = await Event.findOne({ eventname: "A complex event" });
   const comc = await Event.findOne({ eventname: "A complex event copy" });
 
-  const admin = await User.findOne({ username: "admin" });
+  const student0 = await User.findOne({ username: "student0" });
+  const student1 = await User.findOne({ username: "student1" });
+  const student2 = await User.findOne({ username: "student2" });
 
-  await User.addToCollection(admin.id, 'register').members(sim.id);
-  await User.addToCollection(admin.id, 'register').members(com.id);
-  await User.addToCollection(admin.id, 'register').members(simc.id);
-  await User.addToCollection(admin.id, 'register').members(comc.id);
+  await User.addToCollection(student0.id, 'register').members(sim.id);
+  await User.addToCollection(student0.id, 'register').members(com.id);
+  await User.addToCollection(student0.id, 'register').members(simc.id);
+  await User.addToCollection(student0.id, 'register').members(comc.id);
+
+  await User.addToCollection(student1.id, 'register').members(sim.id);
+  await User.addToCollection(student1.id, 'register').members(com.id);
+  await User.addToCollection(student1.id, 'register').members(simc.id);
+  await User.addToCollection(student1.id, 'register').members(comc.id);
+
+  await User.addToCollection(student2.id, 'register').members(sim.id);
+  await User.addToCollection(student2.id, 'register').members(com.id);
+  await User.addToCollection(student2.id, 'register').members(simc.id);
+  await User.addToCollection(student2.id, 'register').members(comc.id);
   // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
   // (otherwise your server will never lift, since it's waiting on the bootstrap)
   return done();
