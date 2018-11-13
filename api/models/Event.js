@@ -40,7 +40,7 @@ module.exports = {
       type: "string"
     },
     quota: {
-      type: "string"
+      type: "integer"
     },
     venue: {
       type: "string"

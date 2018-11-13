@@ -100,6 +100,12 @@ module.exports = {
 
         await User.addToCollection(req.params.id, req.params.association).members(req.params.fk);
 
+        var model = await Event.findOne(req.params.fk);
+
+        var quota = model.quota;
+
+        await Event.update(req.params.fk).set({quota: quota - 1})
+       
 
         return res.redirect('/');
     },
@@ -118,6 +124,12 @@ module.exports = {
         }
 
         await User.removeFromCollection(req.params.id, req.params.association).members(req.params.fk);
+
+        var model = await Event.findOne(req.params.fk);
+
+        var quota = model.quota;
+
+        await Event.update(req.params.fk).set({quota: quota + 1})
 
         return res.redirect('/');
 
