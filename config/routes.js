@@ -25,7 +25,9 @@ module.exports.routes = {
   ***************************************************************************/
  '/': 'EventController.home',
 
-
+ 'GET /event/highlight/:highlight': 'EventController.highlight',
+ 'GET /event/mdepartment/:deparment': 'EventController.mdepartment',
+ 'GET /event/cdepartment/:deparment': 'EventController.cdepartment',
  'GET /event/view/:id': 'EventController.view',
  'GET /event/view1/:id': 'EventController.view1',
 

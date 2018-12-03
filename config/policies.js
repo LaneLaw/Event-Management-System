@@ -11,18 +11,18 @@
 module.exports.policies = {
   EventController: {
 
-    create: 'isAdmin',
-    update: 'isAdmin',
-    populate: 'isAdmin',
-    index: 'isAdmin',
+    // create: 'isAdmin',
+    // update: 'isAdmin',
+    // populate: 'isAdmin',
+    // index: 'isAdmin',
 
 
   },
   UserController: {
 
-    populate: 'isStudent',
-    add: 'isStudent',
-    remove: 'isStudent'
+    // populate: 'isStudent',
+    // add: 'isStudent',
+    // remove: 'isStudent'
 
   }
 

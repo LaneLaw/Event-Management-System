@@ -27,11 +27,32 @@ module.exports = {
 
     // action - index
     index: async function (req, res) {
-
         var events = await Event.find();
+        return res.json(events);
         return res.view('event/index', { 'events': events });
 
     },
+
+    highlight: async function (req, res) {
+        var events = await Event.find({where: { highlight: { contains: 'h' } }});
+        return res.json(events);
+ 
+
+    },
+
+    mdepartment: async function (req, res) {
+        var events = await Event.find({where: { organizer: { contains: 'Music' } }});
+        return res.json(events);
+      
+
+    },
+
+    cdepartment: async function (req, res) {
+        var events = await Event.find({where: { organizer: { contains: 'Computer' } }});
+        return res.json(events);
+    
+    },
+
     // action - view
     view: async function (req, res) {
 

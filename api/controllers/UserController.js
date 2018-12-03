@@ -34,10 +34,11 @@ module.exports = {
             req.session.username = req.body.username;
             req.session.role = user.role;
             req.session.user_id = user.id;
+            req.session.register = user.register;
 
             sails.log("Session: " + JSON.stringify(req.session));
 
-            // return res.json(req.session);
+             return res.json(req.session);
 
             if (req.wantsJSON) {
                 return res.redirect('/');
