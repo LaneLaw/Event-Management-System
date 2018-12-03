@@ -30,27 +30,32 @@ module.exports = {
         var events = await Event.find();
         return res.json(events);
         return res.view('event/index', { 'events': events });
-
     },
 
     highlight: async function (req, res) {
         var events = await Event.find({where: { highlight: { contains: 'h' } }});
         return res.json(events);
- 
-
     },
 
     mdepartment: async function (req, res) {
         var events = await Event.find({where: { organizer: { contains: 'Music' } }});
         return res.json(events);
-      
-
     },
 
     cdepartment: async function (req, res) {
         var events = await Event.find({where: { organizer: { contains: 'Computer' } }});
         return res.json(events);
     
+    },
+
+    fvenue: async function (req, res) {
+        var events = await Event.find({where: { venue: { contains: 'SWT501' } }});
+        return res.json(events);
+    },
+
+    svenue: async function (req, res) {
+        var events = await Event.find({where: { venue: { contains: 'POD' } }});
+        return res.json(events);
     },
 
     // action - view
