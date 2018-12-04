@@ -9,8 +9,12 @@ module.exports = {
     home: async function (req, res) {
 
         var events = await Event.find({ limit: 4, sort: 'highlight' });
-        return res.view('event/home', { 'events': events });
 
+        if (req.wantsJSON) {
+            return res.json({ 'events': events })
+        } else {
+            return res.view('event/home', { 'events': events });
+        }
     },
     // action - create
     create: async function (req, res) {
@@ -28,33 +32,47 @@ module.exports = {
     // action - index
     index: async function (req, res) {
         var events = await Event.find();
-        return res.json(events);
-        return res.view('event/index', { 'events': events });
+        if (req.wantsJSON) {
+            return res.json(events);
+        } else {
+            return res.view('event/index', { 'events': events });
+        }
+        
+    },
+
+    getEvents: async function (req, res) {
+        var events = await Event.find();
+        if (req.wantsJSON) {
+            return res.json(events);
+        } else {
+            return res.view('event/index', { 'events': events });
+        }
+        
     },
 
     highlight: async function (req, res) {
-        var events = await Event.find({where: { highlight: { contains: 'h' } }});
+        var events = await Event.find({ where: { highlight: { contains: 'h' } } });
         return res.json(events);
     },
 
     mdepartment: async function (req, res) {
-        var events = await Event.find({where: { organizer: { contains: 'Music' } }});
+        var events = await Event.find({ where: { organizer: { contains: 'Music' } } });
         return res.json(events);
     },
 
     cdepartment: async function (req, res) {
-        var events = await Event.find({where: { organizer: { contains: 'Computer' } }});
+        var events = await Event.find({ where: { organizer: { contains: 'Computer' } } });
         return res.json(events);
-    
+
     },
 
     fvenue: async function (req, res) {
-        var events = await Event.find({where: { venue: { contains: 'SWT501' } }});
+        var events = await Event.find({ where: { venue: { contains: 'SWT501' } } });
         return res.json(events);
     },
 
     svenue: async function (req, res) {
-        var events = await Event.find({where: { venue: { contains: 'POD' } }});
+        var events = await Event.find({ where: { venue: { contains: 'POD' } } });
         return res.json(events);
     },
 
@@ -62,23 +80,23 @@ module.exports = {
     view: async function (req, res) {
 
         var message = Event.getInvalidIdMsg(req.params);
-    
+
         if (message) return res.badRequest(message);
 
         var model = await Event.findOne(req.params.id);
 
         if (!model) return res.notFound();
 
-        
+
         var models = await User.findOne(req.session.user_id).populate('register');
 
-        return res.view('event/view', { 'event': model,'models': models.register });
+        return res.view('event/view', { 'event': model, 'models': models.register });
 
     },
     view1: async function (req, res) {
 
         var message = Event.getInvalidIdMsg(req.params);
-     
+
         if (message) return res.badRequest(message);
 
         var model = await Event.findOne(req.params.id);
@@ -86,7 +104,7 @@ module.exports = {
         if (!model) return res.notFound();
 
 
-        return res.view('event/view1', { 'event': model});
+        return res.view('event/view1', { 'event': model });
 
     },
 
@@ -208,9 +226,9 @@ module.exports = {
         if (!model) return res.notFound();
 
         // return res.json(model);
-        return res.view('event/beReg', { 'model': model.beReg});
+        return res.view('event/beReg', { 'model': model.beReg });
     },
-    customToJSON: function() {
+    customToJSON: function () {
         // Return a shallow copy of this record with the password removed.
         return _.omit(this, ['password'])
     },

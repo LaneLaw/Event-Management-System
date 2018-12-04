@@ -113,17 +113,17 @@ module.exports.bootstrap = async function (done) {
   const student1 = await User.findOne({ username: "student1" });
   const student2 = await User.findOne({ username: "student2" });
 
-  await User.addToCollection(student0.id, 'register').members(sim.id);
+ 
   await User.addToCollection(student0.id, 'register').members(com.id);
   await User.addToCollection(student0.id, 'register').members(simc.id);
   await User.addToCollection(student0.id, 'register').members(comc.id);
 
-  await User.addToCollection(student1.id, 'register').members(sim.id);
+
   await User.addToCollection(student1.id, 'register').members(com.id);
   await User.addToCollection(student1.id, 'register').members(simc.id);
   await User.addToCollection(student1.id, 'register').members(comc.id);
 
-  await User.addToCollection(student2.id, 'register').members(sim.id);
+
   await User.addToCollection(student2.id, 'register').members(com.id);
   await User.addToCollection(student2.id, 'register').members(simc.id);
   await User.addToCollection(student2.id, 'register').members(comc.id);

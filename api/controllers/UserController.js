@@ -38,10 +38,11 @@ module.exports = {
 
             sails.log("Session: " + JSON.stringify(req.session));
 
-             return res.json(req.session);
+            // var model = await User.find({ where: { username: { contains: req.body.username } } }).populate('register');
 
             if (req.wantsJSON) {
-                return res.redirect('/');
+                // return res.redirect('/');
+                return res.json(req.session);
             } else {
                 return res.ok("Login successfully");
             }
@@ -81,8 +82,11 @@ module.exports = {
         // })
 
         var numOfPage = Math.ceil(await model.register.length / 3);
-
-        return res.view('user/register', { 'model': model.register, 'count': numOfPage, });
+        if(req.wantsJSON){
+            return res.json(model.register);
+        }else{
+            return res.view('user/register', { 'model': model.register, 'count': numOfPage, });
+        }
 
     },
     add: async function (req, res) {
@@ -104,8 +108,12 @@ module.exports = {
         var model = await Event.findOne(req.params.fk);
 
         var quota = model.quota;
+        if(quota > 0){
 
         await Event.update(req.params.fk).set({quota: quota - 1})
+        }else{
+            return res.json("Quota!")
+        }
        
 
         return res.redirect('/');
